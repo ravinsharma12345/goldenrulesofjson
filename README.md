@@ -99,3 +99,37 @@ In an effort to make JSON data more readable, API developers sometimes put more 
 	}
 
 This way, clients can tell the structure of the array without having to manually check the "type" value. If you're using something like a "type" key, it's generally a bad smell. 
+
+Rule #4 - Keep all Keys, Even With No Data
+--------------------------------------------
+
+In relation to the above rule, if one of your objects in an array doesn't have a particular field, you should keep the key there and keep the field blank, instead of removing the field entirely. This way your client won't miss out on any of the awesome data you're providing. 
+
+### Instead of This ###
+
+	{
+	  "animals": [
+	    {
+	      "breed": "dog",
+	      "legs": "4"
+	    },
+	    {
+	      "breed": "snake"
+	    }
+	  ]
+	}
+
+### Do This ###
+
+	{
+	  "animals": [
+	    {
+	      "breed": "dog",
+	      "legs": "4"
+	    },
+	    {
+	      "breed": "snake",
+	      "legs": ""
+	    }
+	  ]
+	}
